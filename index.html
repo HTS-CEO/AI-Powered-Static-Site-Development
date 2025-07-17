@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeSolutions | Business Services</title>
+    <meta name="description" content="Professional business solutions with top-notch services. Contact us today for a consultation.">
+    <meta name="keywords" content="business solutions, professional services, consulting, company services">
+    <meta name="author" content="PrimeSolutions">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --error: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            max-width: 700px;
+            animation: fadeInRight 1s ease;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            animation: fadeInRight 1s ease;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text {
+            margin-bottom: 30px;
+            color: #64748b;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .feature-text {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #f1f5f9;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-text {
+            color: #64748b;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-link:hover {
+            color: var(--primary-dark);
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+        
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            background-color: #f8fafc;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .testimonial-slide::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(37, 99, 235, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #475569;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .slick-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            list-style: none;
+        }
+        
+        .slick-dots li {
+            margin: 0 5px;
+        }
+        
+        .slick-dots button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            border: none;
+            font-size: 0;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slick-dots .slick-active button {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: #f1f5f9;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-text {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-item-content h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item-content p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            animation: fadeInRight 1s ease;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+        }
+        
+        .form-message {
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .form-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-link {
+            color: #94a3b8;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+        
+        .footer-contact-icon {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .about-content {
+                text-align: center;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
+            
+            .hero-image {
+                width: 60%;
+                opacity: 0.7;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: all 0.5s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                text-align: center;
+                padding-top: 100px;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                margin: 50px auto 0;
+                opacity: 1;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .testimonial-slide {
+                padding: 30px 20px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cube"></i>
+                <span>PrimeSolutions</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Innovative Business Solutions for Your Success</h1>
+                <p class="hero-subtitle">We provide cutting-edge services to help your business grow and thrive in today's competitive market.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Our Services</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Business team discussing">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our team">
+            </div>
+            
+            <div class="about-content">
+                <h2 class="section-title">About Our Company</h2>
+                <p class="about-text">Founded in 2010, PrimeSolutions has been at the forefront of delivering exceptional business services to clients worldwide. Our team of experts is dedicated to helping businesses achieve their goals through innovative solutions.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4 class="feature-title">Premium Quality</h4>
+                            <p class="feature-text">We deliver top-notch services with exceptional quality standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4 class="feature-title">Expert Team</h4>
+                            <p class="feature-text">Our professionals have years of experience in their respective fields.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4 class="feature-title">24/7 Support</h4>
+                            <p class="feature-text">We provide round-the-clock support to address your concerns.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4 class="feature-title">Proven Results</h4>
+                            <p class="feature-text">Our strategies have helped businesses grow exponentially.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">We offer a comprehensive range of services designed to meet all your business needs and help you stay ahead of the competition.</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Business Consulting">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Business Consulting</h3>
+                        <p class="service-text">Expert advice to help you make informed business decisions and develop effective strategies for growth.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Financial Planning">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Financial Planning</h3>
+                        <p class="service-text">Comprehensive financial solutions to optimize your resources and maximize profitability.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Marketing Strategy">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Marketing Strategy</h3>
+                        <p class="service-text">Innovative marketing approaches to enhance your brand visibility and customer engagement.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Client Testimonials</h2>
+                <p class="section-subtitle">Hear what our clients have to say about our services and how we've helped their businesses grow.</p>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-slide">
+                    <p class="testimonial-content">PrimeSolutions transformed our business with their innovative strategies. Their team provided exceptional guidance that helped us increase our revenue by 150% within just one year.</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, TechForward Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <p class="testimonial-content">The financial planning services from PrimeSolutions were exactly what our company needed. Their expertise helped us streamline operations and reduce costs significantly.</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Chen</h4>
+                            <p>CFO, Global Ventures</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <p class="testimonial-content">Working with PrimeSolutions was a game-changer for our marketing efforts. Their creative approach and data-driven strategies delivered measurable results beyond our expectations.</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Marketing Director, BrightIdeas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2 class="contact-title">Get In Touch</h2>
+                <p class="contact-text">Have questions or ready to start your project? Contact us today and our team will get back to you as soon as possible.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Our Location</h4>
+                            <p>123 Business Ave, Suite 500<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Phone Number</h4>
+                            <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Email Address</h4>
+                            <p>info@primesolutions.com<br>support@primesolutions.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-message" id="formMessage"></div>
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="How can we help?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea id="message" class="form-control" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>PrimeSolutions</h3>
+                    <p>Providing innovative business solutions to help companies grow and succeed in today's competitive market.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#services" class="footer-link">Services</a></li>
+                        <li><a href="#testimonials" class="footer-link">Testimonials</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Business Consulting</a></li>
+                        <li><a href="#" class="footer-link">Financial Planning</a></li>
+                        <li><a href="#" class="footer-link">Marketing Strategy</a></li>
+                        <li><a href="#" class="footer-link">Risk Management</a></li>
+                        <li><a href="#" class="footer-link">Technology Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+                        <span>123 Business Ave, Suite 500, New York, NY 10001</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt footer-contact-icon"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope footer-contact-icon"></i>
+                        <span>info@primesolutions.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PrimeSolutions. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--error);"></i> by PrimeSolutions Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            $('.testimonials-container').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false
+            });
+            
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    formMessage.textContent = 'Sending your message...';
+                    formMessage.className = 'form-message';
+                    formMessage.style.display = 'block';
+                    
+                    setTimeout(function() {
+                        formMessage.textContent = 'Your message has been sent successfully! We will get back to you soon.';
+                        formMessage.className = 'form-message success';
+                        contactForm.reset();
+                    }, 1500);
+                });
+            }
+            
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.service-card, .about-image, .about-content, .contact-info, .contact-form');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
